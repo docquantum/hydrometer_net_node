@@ -1,0 +1,107 @@
+[package]
+name = "hydrometer_net_node"
+version = "0.0.0"
+authors = ["DocQuantum <shchurgood@gmail.com>"]
+edition = "2021"
+license = "GPL3"
+
+[dependencies]
+esp32-hal = { version = "0.18.0", features = [
+    "async",
+    "embassy",
+    "embassy-time-timg0",
+    "embassy-executor-thread",
+] }
+# esp-hal-common = { version = "0.15.0", features = ["esp32"] }
+esp-backtrace = { version = "0.10.0", features = [
+    "esp32",
+    "panic-handler",
+    "exception-handler",
+    "print-uart",
+] }
+esp-println = { version = "0.8.0", features = ["esp32", "log"] }
+# esp-alloc = { version = "0.3.0" }
+# esp-wifi = { version = "0.2.0", features = ["esp32", "wifi"] }
+
+embassy-time = { version = "0.3.0" }
+embassy-executor = { version = "*", features = ["nightly"] }
+embassy-sync = { version = "0.5.0" }
+
+log = { version = "0.4.20" }
+# smoltcp = { version = "0.11.0", default-features = false, features = [
+#     "proto-igmp",
+#     "proto-ipv4",
+#     "socket-tcp",
+#     "socket-icmp",
+#     "socket-udp",
+#     "medium-ethernet",
+#     "proto-dhcpv4",
+#     "socket-raw",
+#     "socket-dhcpv4",
+# ] }
+# embedded-svc = { version = "0.27.0", default-features = false, features = [] }
+embedded-io = { version = "0.6.1" }
+heapless = { version = "0.8.0" }
+# critical-section = { version = "1.1.2" }
+static_cell = { version = "2.0.0", features = ["nightly"] }
+
+
+# [features]
+# default = ["embassy-integrated-timers", "rt", "vectored", "xtal-40mhz"]
+
+# ## Enable support for using the Bluetooth radio.
+# bluetooth = []
+# ## Enable debug features in the HAL (used for development).
+# debug = ["esp-hal-common/debug"]
+# ## Enable logging output using the `log` crate.
+# log = ["esp-hal-common/log", "esp-println/log"]
+# ## Enable runtime support.
+# rt = ["esp-hal-common/rt-xtensa"]
+# ## Enable interrupt vectoring.
+# vectored = ["esp-hal-common/vectored"]
+# ## Target device has a 40MHz crystal.
+# xtal-40mhz = ["esp-hal-common/xtal-40mhz"]
+
+# #! ### Trait Implementation Feature Flags
+# ## Enable support for asynchronous operation, with interfaces provided by
+# ## `embedded-hal-async` and `embedded-io-async`.
+# async = ["esp-hal-common/async"]
+# ## Implement `defmt::Format` on certain types.
+# defmt = ["esp-hal-common/defmt", "esp-println/defmt-espflash"]
+# ## Implement the traits defined in the `1.0.0` releases of `embedded-hal` and
+# ## `embedded-hal-nb` for the relevant peripherals.
+# eh1 = ["esp-hal-common/eh1"]
+# ## Implement the traits defined in `embedded-io` for certain peripherals.
+# embedded-io = ["esp-hal-common/embedded-io"]
+# ## Implement the `ufmt_write::uWrite` trait for certain peripherals.
+# ufmt = ["esp-hal-common/ufmt"]
+
+# #! ### PSRAM Feature Flags
+# psram = []
+# ## Use externally connected PSRAM (2MB).
+# psram-2m = ["esp-hal-common/psram-2m", "psram"]
+# ## Use externally connected PSRAM (4MB).
+# psram-4m = ["esp-hal-common/psram-4m", "psram"]
+# ## Use externally connected PSRAM (8MB).
+# psram-8m = ["esp-hal-common/psram-8m", "psram"]
+
+# #! ### Embassy Feature Flags
+# ## Enable support for `embassy`, a modern asynchronous embedded framework.
+# embassy = ["esp-hal-common/embassy"]
+# ## Use the interrupt-mode embassy executor.
+# embassy-executor-interrupt = ["esp-hal-common/embassy-executor-interrupt"]
+# ## Use the thread-mode embassy executor.
+# embassy-executor-thread = ["esp-hal-common/embassy-executor-thread"]
+# ## Uses hardware timers as alarms for the executors. Using this feature
+# ## limits the number of executors to the number of hardware alarms provided
+# ## by the time driver.
+# embassy-integrated-timers = ["esp-hal-common/embassy-integrated-timers"]
+# ## Enable the embassy time driver using the `TIMG0` peripheral. The `TIMG0`
+# ## peripheral has two alarms available for use.
+# embassy-time-timg0 = [
+#     "esp-hal-common/embassy-time-timg0",
+#     "embassy-time/tick-hz-1_000_000",
+# ]
+
+[profile.release]
+debug = 2
